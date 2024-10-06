@@ -5,9 +5,12 @@ namespace App\Livewire;
 use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Clicker extends Component
 {
+    use WithPagination;
+    
     #[Validate('required|max:50')]
     public $name = '';
 
@@ -32,7 +35,7 @@ class Clicker extends Component
 
     public function render()
     {
-        $user_data = User::all();
+        $user_data = User::paginate('5');
         return view('livewire.clicker', [
             'user_data' => $user_data,
         ]);

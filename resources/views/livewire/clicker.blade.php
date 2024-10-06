@@ -29,8 +29,9 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    </form>
     <hr>
+    <div>
     <table class="table">
         <thead>
           <tr>
@@ -49,5 +50,8 @@
           @endforeach
         </tbody>
       </table>
+      {{ $user_data->links() }}
+    </div>
+
 
 </div>
