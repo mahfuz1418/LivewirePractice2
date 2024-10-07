@@ -28,6 +28,20 @@
             @enderror
         </div>
 
+        <div class="mb-3">
+            <label for="photo" class="form-label">Photo</label>
+            <input type="file"  class="form-control" wire:model='photo'>
+            @error('photo')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+        @if ($photo)
+            <div class="py-2">
+                <img width="150"  src="{{ $photo->temporaryUrl() }}" alt="">
+            </div>
+        @endif
+
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <hr>
@@ -36,8 +50,9 @@
         <thead>
           <tr>
             <th scope="col">Serial</th>
+            <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Action</th>
+            <th scope="col">Photo</th>
           </tr>
         </thead>
         <tbody>
@@ -46,12 +61,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
+                <td><img width="50" src="{{ asset('uploads/user_image/') }}/{{ $item->photos }}">
             </tr>
           @endforeach
         </tbody>
       </table>
       {{ $user_data->links() }}
     </div>
-
-
 </div>

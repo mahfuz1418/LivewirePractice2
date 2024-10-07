@@ -28,9 +28,6 @@
             @enderror
         </div>
 
-
-
-
         <div class="flex items-center space-x-2">
             <button wire:click='edit({{ $todo->id }})'
                 class="text-sm text-teal-500 font-semibold rounded hover:text-teal-800">
