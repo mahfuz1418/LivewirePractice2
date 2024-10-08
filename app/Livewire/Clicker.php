@@ -44,13 +44,11 @@ class Clicker extends Component
 
         $this->reset('name', 'email', 'password', 'photo');
         session()->flash('status', 'User Created successfully.');
+        $this->dispatch('post-created');
     }
 
     public function render()
     {
-        $user_data = User::paginate('5');
-        return view('livewire.clicker', [
-            'user_data' => $user_data,
-        ]);
+        return view('livewire.clicker');
     }
 }

@@ -12,6 +12,8 @@
 <body>
 
     @livewire('todo')
+    @livewire('todo-list', ['lazy' => true])
+
 
 </body>
 
