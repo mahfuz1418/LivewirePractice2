@@ -2,6 +2,8 @@
     <div class="w-full">
         <header class="flex bg-white justify-between h-20 border-b border-b-gray-200 items-center px-6">
             <div id="left-header" class="">
+                    <a href="{{ url('/data-table') }}" class="px-3 py-1 bg-red-500 text-white rounded">Data Table</a>
+                    <a href="{{ url('/') }}" class="px-3 py-1 bg-red-500 text-white rounded">Clicker</a>
             </div>
             <div id="right-header" class="text-gray-800 hover:text-gray-600 space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -4,6 +4,10 @@
             {{ session('status') }}
         </div>
     @endif
+    <div>
+        <a href="{{ url('/todo') }}" class="btn btn-success">Todo</a>
+        <a href="{{ url('/data-table') }}" class="btn btn-warning">Data Table</a>
+    </div>
     <form wire:submit='createUser'>
         <div class="mb-3">
             <label for="name" class="form-label">Name </label>

@@ -1,7 +1,13 @@
 <div>
+
     <div>
+
         <section class="mt-10">
             <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+                <div  class="my-4">
+                    <a href="{{ url('/todo') }}" class="px-3 py-1 bg-red-500 text-white rounded">Todo</a>
+                    <a href="{{ url('/') }}" class="px-3 py-1 bg-red-500 text-white rounded">Clicker</a>
+                </div>
                 <!-- Start coding here -->
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div class="flex items-center justify-between d p-4">
