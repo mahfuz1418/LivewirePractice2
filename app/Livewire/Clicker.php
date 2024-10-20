@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\UserForm;
 use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -14,35 +15,25 @@ class Clicker extends Component
     use WithPagination;
     use WithFileUploads;
 
-    #[Validate('required|max:50')]
-    public $name = '';
-
-    #[Validate('required|email|unique:users')]
-    public $email = '';
-
-    #[Validate('required|min:6')]
-    public $password = '';
-
-    #[Validate('image|max:1024')]
-    public $photo;
+    public UserForm $userForm;
 
     public function createUser()
     {
-        $this->validate();
+        $this->userForm->validate();
 
-        $imageName = uniqid() . '.' . $this->photo->getClientOriginalExtension();
-        if ($this->photo) {
-            $image = $this->photo->storeAs('user_image', $imageName, 'public');
+        $imageName = uniqid() . '.' . $this->userForm->photo->getClientOriginalExtension();
+        if ($this->userForm->photo) {
+            $image = $this->userForm->photo->storeAs('user_image', $imageName, 'public');
         }
 
         User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => $this->password,
+            'name' => $this->userForm->name,
+            'email' => $this->userForm->email,
+            'password' => $this->userForm->password,
             'photos' => $imageName,
         ]);
 
-        $this->reset('name', 'email', 'password', 'photo');
+        $this->userForm->reset(['name', 'email', 'password', 'photo']);
         session()->flash('status', 'User Created successfully.');
         $this->dispatch('post-created');
     }
